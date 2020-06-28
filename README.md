@@ -7,7 +7,7 @@ Container image for everyday Clojure.
 ## Why this image?
 
 This is stock Clojure container image with minor tweaks and opinions:
-1. It is based on Debian 10 (Buster).
+1. It targets OpenJDK 11 and is based on Debian 10 (Buster).
 2. Contains `tools.deps` as a tool of choice for dependency managment.
 3. Uses non-root user by default. `UID` and `GID` can be both customized with
    Docker build args if you wish but Docker Hub hook sets it to sensible
