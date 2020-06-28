@@ -40,7 +40,7 @@ you didn't forget important `docker run` options for REPL to be fully working
 function repl {
   docker run --rm -it --detach-keys=ctrl-@\
              -v "$HOME/.m2:/home/app-user/.m2"\
-             shellbro/clojure -Sdeps "{:deps $1}"
+             shellbro/clojure -Sdeps "{:deps ${1:-{}}}"
 }
 ```
 
