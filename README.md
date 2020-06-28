@@ -20,8 +20,9 @@ This is stock Clojure container image with minor tweaks and opinions:
 
    ```
    $ docker run --rm -it --detach-keys=ctrl-@\
-           -v "$HOME/.m2:/home/app-user/.m2" shellbro/clojure -Sdeps\
-           '{:deps {clojure.java-time {:mvn/version "0.3.2"}}}'
+                -v "$HOME/.m2:/home/app-user/.m2"\
+                shellbro/clojure -Sdeps\
+                '{:deps {clojure.java-time {:mvn/version "0.3.2"}}}'
    ```
 5. It is strictly versioned. Every image tag has a Unix time suffix indicating
    its build time.
@@ -38,8 +39,8 @@ you didn't forget important `docker run` options for REPL to be fully working
 ```
 function repl {
   docker run --rm -it --detach-keys=ctrl-@\
-         -v "$HOME/.m2:/home/app-user/.m2"\
-         shellbro/clojure -Sdeps "{:deps $1}"
+             -v "$HOME/.m2:/home/app-user/.m2"\
+             shellbro/clojure -Sdeps "{:deps $1}"
 }
 ```
 
