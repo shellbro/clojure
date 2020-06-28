@@ -13,3 +13,4 @@ USER app-user
 WORKDIR /usr/local/src/app
 
 ENTRYPOINT ["/usr/local/bin/rlwrap-workaround"]
+CMD ["clj"]

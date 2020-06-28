@@ -14,33 +14,33 @@ This is stock Clojure container image with minor tweaks and opinions:
    defaults (`1000:1000`). Thanks to this it is easy to share host directory
    `$HOME/.m2` with container and download dependencies only once without
    permission issues.
-4. Implements `rlwrap` workaround in such a way that you can pass any arguments
-   to `clj` runner. For example, to start a REPL with `clojure.java-time`
-   dependency available use `-Sdeps` accordingly:
+4. Implements `rlwrap` workaround in such a way that you can call `clj` or
+   `clojure` commands passing any arguments. For example, to start a REPL with
+   `clojure.java-time` dependency available use `-Sdeps` argument accordingly:
 
    ```
-   $ docker run --rm -it --detach-keys=ctrl-@\
-                -v "$HOME/.m2:/home/app-user/.m2"\
-                shellbro/clojure -Sdeps\
-                '{:deps {clojure.java-time {:mvn/version "0.3.2"}}}'
+   $ sudo docker run --rm -it --detach-keys=ctrl-@\
+                     -v "$HOME/.m2:/home/app-user/.m2"\
+                     shellbro/clojure clj -Sdeps\
+                     '{:deps {clojure.java-time {:mvn/version "0.3.2"}}}'
    ```
 5. It is strictly versioned. Every image tag has a Unix time suffix indicating
-   its build time.
+   its release time.
 
 ## Ad hoc containerized Clojure REPL
 
 To have your Clojure REPL always at hand add the following function to your
-`.bashrc` file. This function takes your `EDN` deps as argument and makes sure
-you didn't forget important `docker run` options for REPL to be fully working
-(like `--detach-keys` without which `docker` will intercept `readline` keybiding
-`Ctrl-p`).
+`.bashrc` file. This function takes your `EDN` deps as an argument and makes
+sure you didn't forget important `docker run` options for REPL to be fully
+working (like `--detach-keys` without which `docker` will intercept `readline`
+keybiding `Ctrl-p`).
 
 
 ```
 function repl {
-  docker run --rm -it --detach-keys=ctrl-@\
-             -v "$HOME/.m2:/home/app-user/.m2"\
-             shellbro/clojure -Sdeps "{:deps ${1:-{}}}"
+  sudo docker run --rm -it --detach-keys=ctrl-@\
+                  -v "$HOME/.m2:/home/app-user/.m2"\
+                  shellbro/clojure clj -Sdeps "{:deps ${1:-{}}}"
 }
 ```
 
