@@ -15,7 +15,7 @@ This is stock Clojure container image with minor tweaks and opinions:
    `$HOME/.m2` with container and download dependencies only once without
    permission issues.
 4. Implements `rlwrap` workaround in such a way that you can call `clj` or
-   `clojure` commands passing any arguments. For example, to start a REPL with
+   `clojure` command passing any arguments. For example, to start a REPL with
    `clojure.java-time` dependency available use `-Sdeps` argument accordingly:
 
    ```
