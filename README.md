@@ -31,8 +31,8 @@ This is stock Clojure container image with minor tweaks and opinions:
 To have your Clojure REPL always at hand add the following function to your
 `.bashrc` file. This function takes your `EDN` deps as argument and makes sure
 you didn't forget important `docker run` options for REPL to be fully working
-(like `--detach-keys` without which `docker` will intercept `readline`
-keybidning `Ctrl-p`).
+(like `--detach-keys` without which `docker` will intercept `readline` keybiding
+`Ctrl-p`).
 
 
 ```
