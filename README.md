@@ -9,10 +9,11 @@ Container image for everyday Clojure.
 This is stock Clojure container image with minor tweaks and opinions:
 1. It is based on Debian 10 (Buster).
 2. Contains `tools.deps` as a tool of choice for dependency managment.
-3. Uses non-root user by default. User `UID` and `GID` can be customized with
-   Docker build args if you wish but DockerHub hook sets it to sensible defaults
-   (`1000:1000`). Thanks to this it is easy to share host directory `$HOME/.m2`
-   with container and download dependencies only once without permission issues.
+3. Uses non-root user by default. `UID` and `GID` both can be customized with
+   Docker build args if you wish but Docker Hub hook sets it to sensible
+   defaults (`1000:1000`). Thanks to this it is easy to share host directory
+   `$HOME/.m2` with container and download dependencies only once without
+   permission issues.
 4. Implements `rlwrap` workaround in such a way that you can pass any arguments
    to `clj` runner. For example, to start a REPL with `clojure.java-time`
    dependency available use `-Sdeps` accordingly:
@@ -53,4 +54,5 @@ user=> (t/as (t/local-date) :year)
 2020
 ```
 
-Note that when using `repl` function `:deps` level is already in place.
+Note that when using `repl` function `:deps` level is already in place for user
+convenience.
